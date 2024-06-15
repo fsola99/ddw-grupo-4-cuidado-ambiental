@@ -109,3 +109,27 @@ img {
 .cardJuego:hover {
     transform: translateY(-10px);
 }
+
+#celebration {
+    font-size: 2em;
+    color: #fff;
+    text-align: center;
+    animation: celebrationAnimation 3s linear infinite;
+    margin-bottom: 2rem;
+}
+
+@keyframes celebrationAnimation {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.25); }
+    100% { transform: scale(1); }
+}
+
+.bg-ambiental-oscuro{
+    background-color: #344E41;
+}
+.bg-ambiental-oscurito{
+    background-color: #3A5A40;
+}
+.bg-ambiental-mid{
+    background-color: #588157;
+}

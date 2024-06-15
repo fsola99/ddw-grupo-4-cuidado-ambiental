@@ -1,0 +1,150 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+header {
+  background-color: #588152;
+  color: white;
+  padding: 10px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+footer {
+  background-color: #d7d7cd;
+  color: black;
+  text-align: center;
+  justify-content:center ;
+  padding: 10px 20px;
+  
+}
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+nav {
+  background-color: black;
+  padding: 10px;
+}
+nav a {
+  color: white;
+  text-decoration: none;
+  cursor:pointer;
+  padding: 10px;
+  display: inline-block;
+  margin-left: 10px;
+}
+img {
+  width: 90px;
+  height: auto;
+  margin-left: 10px;
+}
+
+.title{
+  font-size: 60px;
+  color: #344e41;
+}
+
+.subTitle{
+  font-size:35px;
+}
+
+.item-navbar:hover{
+  color:#c5c8cd
+}
+
+.navbar-custom {
+  background-color: inherit;
+}
+.navbar-custom .navbar-toggler {
+  color: #fff; 
+  border-color: #fff;
+}
+.navbar-custom .navbar-nav .nav-link {
+  color: #fff; 
+}
+
+
+
+
+.titleSinColor{
+  font-size: 40px;
+}
+.textoCuerpo{
+  font-size: 20px;
+}
+
+
+#resultado {
+  margin-top: 10px;
+  min-height: 1em; 
+}
+
+
+
+
+
+
+
+input {
+  margin-left: 35px;
+}
+
+
+
+button {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+
+#felicitaciones {
+  color: white;
+  font-weight: bold;
+} 
+
+#juego {
+  color: white;
+  background-color: #3a5a40;
+  text-align: center;
+  margin-bottom: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  
+}
+
+#pantallaJuego {
+  display: none; 
+  width: 100%; 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+#palabraIngresada {
+margin-left: 540px;
+}
+
+#enviarPalabra {
+  margin-left: 610px;
+}
+@media (max-width: 768px) {
+  #palabraIngresada {
+    margin-left: 50px;   
+  }
+}
+
+@media (max-width: 768px) {
+  #enviarPalabra {
+    margin-left: 112px;
+  }
+}

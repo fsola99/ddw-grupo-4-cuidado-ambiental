@@ -1,0 +1,74 @@
+#palabra {
+    color: white;
+    font-size: 24px;
+    letter-spacing: 10px;
+}
+#mensaje {
+    color: white;
+    margin-top: 20px;
+    font-size: 18px;
+}
+#pista {
+    margin-bottom: 20px;
+    font-size: 18px;
+    font-style: italic;
+    color:white;
+}
+.fadeIn {
+    animation: fadeIn 1s forwards;
+}
+.mostrar {
+    animation: mostrar 0.5s;
+}
+.ganar {
+    animation: ganar 2s forwards;
+}
+.perder {
+    animation: perder 2s forwards;
+}
+
+#palabraUsada{
+    text-decoration: line-through;
+    color: white;
+}
+
+.ocultarBtn{
+    display: none;;
+}
+
+.btn-primary{
+    background-color:#344e41 !important;
+    border-color:#344e41!important;
+}
+.btn-primary:hover{
+    background-color:#293d33!important;
+    border-color:#293d33!important;
+}
+
+.btn-success{
+    background-color:#d7d7cd!important;
+    border-color:#d7d7cd!important;
+}
+.btn-success:hover{
+    background-color:#bdbdb5!important;
+    border-color:#bdbdb5!important;
+}
+
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+@keyframes mostrar {
+    0%, 100% { transform: translateX(0); }
+    20%, 60% { transform: translateX(-10px); }
+    40%, 80% { transform: translateX(10px); }
+}
+@keyframes ganar {
+    from { color: black; }
+    to { color: white; }
+}
+@keyframes perder {
+    from { color: black; }
+    to { color: #dc3545; }
+}

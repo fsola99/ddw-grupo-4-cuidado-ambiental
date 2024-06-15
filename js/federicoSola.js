@@ -105,7 +105,9 @@ $(document).ready(function() {
     });
 
     $('#retry-button').on('click', function() {
-        startQuiz(); // Reiniciar el quiz al hacer clic en "Reintentar"
+        $('#start-screen').removeClass('d-none');
+        $('#result-screen').addClass('d-none');
+        $('#question-screen').addClass('d-none');
     });
 
     $('#prev-button').on('click', function() {
@@ -114,10 +116,6 @@ $(document).ready(function() {
 
     $('#exit-button').on('click', function() {
         exitQuiz(); // Salir del quiz
-    });
-
-    $('#exit-button-result').on('click', function() {
-        exitQuiz(); // Salir del quiz desde la pantalla de resultados
     });
 });
 
@@ -152,7 +150,7 @@ function showQuestion() {
         const optionsDiv = $('#options');
         optionsDiv.empty();
         questionData.options.forEach(option => {
-            const button = $('<button></button>').text(option);
+            const button = $('<button class=m-3></button>').text(option);
             button.on('click', () => selectAnswer(option));
             optionsDiv.append(button);
         });
@@ -221,7 +219,6 @@ function showResults() {
 
     if (score >= passingScore) {
         $('#celebration').removeClass('d-none');
-        errorListDiv.append(`<p>🎉 ¡Felicidades! Has aprobado. 🎉</p>`);
     } else {
         $('#celebration').addClass('d-none');
         errorListDiv.append(`<p>Mejor suerte para la próxima. ¡Vuelve a intentarlo para recibir un premio!</p>`);

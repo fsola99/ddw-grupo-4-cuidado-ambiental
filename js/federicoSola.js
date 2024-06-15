@@ -145,6 +145,8 @@ function startQuiz() {
 
 function showQuestion() {
     if (currentQuestionIndex >= 0 && currentQuestionIndex < selectedQuestions.length) {
+        $('#question-header').removeClass('d-none')
+        $('#question-header').text(`Pregunta ${currentQuestionIndex + 1} de ${selectedQuestions.length}`);
         const questionData = selectedQuestions[currentQuestionIndex];
         $('#question').text(questionData.question);
         $('#question-image').attr('src', questionData.image);
@@ -162,6 +164,7 @@ function showQuestion() {
             $('#prev-button').removeClass('d-none');
         }
     } else if (currentQuestionIndex === selectedQuestions.length) {
+        $('#question-header').addClass('d-none')
         showResults();
     }
 }
@@ -180,6 +183,7 @@ function prevQuestion() {
 }
 
 function exitQuiz() {
+    $('#question-header').addClass('d-none')
     $('#question-screen').addClass('d-none');
     $('#result-screen').addClass('d-none');
     $('#start-screen').removeClass('d-none');

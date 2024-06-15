@@ -130,7 +130,7 @@ img {
 
 #celebration {
     font-size: 2em;
-    color: green;
+    color: #fff;
     text-align: center;
     animation: celebrationAnimation 3s linear infinite;
     margin-bottom: 2rem;
@@ -138,7 +138,7 @@ img {
 
 @keyframes celebrationAnimation {
     0% { transform: scale(1); }
-    50% { transform: scale(1.5); }
+    50% { transform: scale(1.25); }
     100% { transform: scale(1); }
 }
 

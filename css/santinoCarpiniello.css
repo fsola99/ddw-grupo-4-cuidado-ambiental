@@ -82,7 +82,7 @@ img {
 
 #resultado {
   margin-top: 10px;
-  min-height: 1em; /* Establece una altura mínima para evitar cambios bruscos en el diseño */
+  min-height: 1em; 
 }
 
 

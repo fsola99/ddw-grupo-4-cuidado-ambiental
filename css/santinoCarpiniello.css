@@ -137,3 +137,14 @@ margin-left: 540px;
 #enviarPalabra {
   margin-left: 610px;
 }
+@media (max-width: 768px) {
+  #palabraIngresada {
+    margin-left: 50px;   
+  }
+}
+
+@media (max-width: 768px) {
+  #enviarPalabra {
+    margin-left: 112px;
+  }
+}

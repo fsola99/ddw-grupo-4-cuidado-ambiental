@@ -151,7 +151,7 @@ function showQuestion() {
         const optionsDiv = $('#options');
         optionsDiv.empty();
         questionData.options.forEach(option => {
-            const button = $('<button class=m-3></button>').text(option);
+            const button = $('<button class="btn btn-secondary bg-light text-dark m-3"></button>').text(option);
             button.on('click', () => selectAnswer(option));
             optionsDiv.append(button);
         });

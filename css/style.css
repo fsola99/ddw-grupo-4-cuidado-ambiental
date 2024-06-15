@@ -110,24 +110,6 @@ img {
     transform: translateY(-10px);
 }
 
-#prev-button, #exit-button, #retry-button, #exit-button-resultado{
-    display: inline-block;
-    margin-top: 10px;
-    padding: 10px 20px;
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    cursor: pointer;
-}
-
-#prev-button:hover, #exit-button:hover, #retry-button:hover, #exit-button-resultado:hover{
-    background-color: #45a049;
-}
-
-#errors p {
-    text-align: left;
-}
-
 #celebration {
     font-size: 2em;
     color: #fff;

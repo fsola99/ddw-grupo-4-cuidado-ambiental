@@ -85,15 +85,15 @@ let allQuestions = [
     }
 ];
 let selectedQuestions = [];
+let initialSelectedQuestions = [];
 let currentQuestion = 0;
 let currentQuestionIndex = 0;
 let score = 0;
 let incorrectAnswers = [];
 let userAnswers = [];
-let difficultyMode = ""; // Variable para almacenar la dificultad elegida por el usuario
+let difficultyMode = "";
 
 $(document).ready(function() {
-    // Eventos de botones para iniciar el quiz
     $('#easy-mode-button').on('click', function() {
         difficultyMode = "easy";
         startQuiz();
@@ -105,17 +105,19 @@ $(document).ready(function() {
     });
 
     $('#retry-button').on('click', function() {
-        $('#start-screen').removeClass('d-none');
-        $('#result-screen').addClass('d-none');
-        $('#question-screen').addClass('d-none');
+        retryQuiz();
     });
 
     $('#prev-button').on('click', function() {
-        prevQuestion(); // Retroceder a la pregunta anterior
+        prevQuestion();
     });
 
     $('#exit-button').on('click', function() {
-        exitQuiz(); // Salir del quiz
+        exitQuiz();
+    });
+
+    $('#exit-button-resultado').on('click', function() {
+        exitQuiz();
     });
 });
 
@@ -124,13 +126,13 @@ function getRandomQuestions(questions, num) {
     return shuffled.slice(0, num);
 }
 
-// Función para iniciar el quiz
 function startQuiz() {
     if (difficultyMode === "easy") {
-        selectedQuestions = getRandomQuestions(allQuestions, 5); // Modo fácil: 5 preguntas aleatorias
+        selectedQuestions = getRandomQuestions(allQuestions, 5);
     } else if (difficultyMode === "hard") {
-        selectedQuestions = allQuestions.slice(); // Modo difícil: Todas las preguntas
+        selectedQuestions = allQuestions.slice();
     }
+    initialSelectedQuestions = selectedQuestions.slice();
     currentQuestionIndex=0;
     score = 0;
     incorrectAnswers = [];
@@ -141,7 +143,6 @@ function startQuiz() {
     showQuestion();
 }
 
-// Función para mostrar la pregunta actual
 function showQuestion() {
     if (currentQuestionIndex >= 0 && currentQuestionIndex < selectedQuestions.length) {
         const questionData = selectedQuestions[currentQuestionIndex];
@@ -155,25 +156,22 @@ function showQuestion() {
             optionsDiv.append(button);
         });
 
-        // Habilitar o deshabilitar el botón "Volver"
         if (currentQuestionIndex === 0) {
             $('#prev-button').addClass('d-none');
         } else {
             $('#prev-button').removeClass('d-none');
         }
     } else if (currentQuestionIndex === selectedQuestions.length) {
-        showResults(); // Mostrar los resultados al finalizar todas las preguntas
+        showResults();
     }
 }
 
-// Función para seleccionar una respuesta
 function selectAnswer(option) {
     userAnswers[currentQuestionIndex] = option;
     currentQuestionIndex++;
     showQuestion();
 }
 
-// Función para retroceder a la pregunta anterior
 function prevQuestion() {
     if (currentQuestionIndex > 0) {
         currentQuestionIndex--;
@@ -181,14 +179,12 @@ function prevQuestion() {
     }
 }
 
-// Función para salir del quiz y regresar a la pantalla de inicio
 function exitQuiz() {
     $('#question-screen').addClass('d-none');
     $('#result-screen').addClass('d-none');
     $('#start-screen').removeClass('d-none');
 }
 
-// Función para mostrar los resultados del quiz
 function showResults() {
     score = 0;
     incorrectAnswers = [];
@@ -217,12 +213,28 @@ function showResults() {
         errorListDiv.append(errorItem);
     });
 
+    $('#celebration').empty();
     if (score >= passingScore) {
         $('#celebration').removeClass('d-none');
+        $('#celebration').append(`<p>🎉 ¡Felicidades! Has aprobado 🎉</p>`);
+        if (difficultyMode === "hard") {
+            $('#celebration').append(`<p>No solo has aprobado sino que también has demostrado un gran conocimiento del cuidado ambiental. Como premio, aquí tienes un wallpaper asombroso: <a href="../img/federicoWallpaperDificil.jpg" target="_blank" download="federicoWallpaperDificil.jpg">Descargar Wallpaper</a></p>`);        }
     } else {
         $('#celebration').addClass('d-none');
-        errorListDiv.append(`<p>Mejor suerte para la próxima. ¡Vuelve a intentarlo para recibir un premio!</p>`);
+        errorListDiv.append(`<p>Mejor suerte para la próxima. ¡Vuelve a intentarlo!</p>`);
     }
 
     $('#result-screen').removeClass('d-none');
+}
+
+function retryQuiz() {
+    selectedQuestions = initialSelectedQuestions.slice();
+    currentQuestionIndex = 0;
+    score = 0;
+    incorrectAnswers = [];
+    userAnswers = new Array(selectedQuestions.length).fill(null);
+    $('#start-screen').addClass('d-none');
+    $('#result-screen').addClass('d-none');
+    $('#question-screen').removeClass('d-none')
+    showQuestion();
 }

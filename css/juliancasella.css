@@ -1,0 +1,63 @@
+/* Estilos específicos para el juego de clasificación de basura */
+
+.center-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+#game-container {
+    background-color: #f0f0f0;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+.titleSinColor {
+    font-size: 2.5rem;
+    color: #333;
+}
+
+.trash-item {
+    background-color: #FFEB3B; /* Color amarillo */
+    padding: 10px 20px;
+    border: 2px solid #333;
+    border-radius: 5px;
+    margin: 10px;
+    cursor: pointer;
+    user-select: none;
+}
+
+.recycle-bin {
+    background-color: #4CAF50; /* Color verde */
+    color: white; /* Texto blanco para contraste */
+    padding: 15px;
+    border: 2px solid #333;
+    border-radius: 5px;
+    margin: 10px;
+    cursor: pointer;
+    user-select: none;
+}
+
+#trash-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#recycle-bins {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@media (max-width: 768px) {
+    .titleSinColor {
+        font-size: 2rem;
+    }
+
+    .trash-item, .recycle-bin {
+        padding: 8px 16px;
+    }
+}

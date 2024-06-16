@@ -5,19 +5,79 @@ document.addEventListener('DOMContentLoaded', () => {
     const resultContainer = document.getElementById('result-container');
     const resultMessage = document.getElementById('result-message');
     let totalItems = trashItems.length;
+    let draggedItem = null; // Variable para almacenar el elemento arrastrado
+
+    // Función para manejar la lógica de arrastrar y soltar
+    function handleDragStart() {
+        draggedItem = this;
+        setTimeout(() => (this.className = 'invisible'), 0);
+    }
+
+    function handleDragEnd() {
+        this.className = 'trash-item';
+        draggedItem = null;
+    }
+
+    function handleDragOver(e) {
+        e.preventDefault();
+    }
+
+    function handleDragEnter(e) {
+        e.preventDefault();
+        this.className += ' hovered';
+    }
+
+    function handleDragLeave() {
+        this.className = 'recycle-bin';
+    }
+
+    function handleDrop() {
+        if (draggedItem) {
+            this.appendChild(draggedItem);
+            this.className = 'recycle-bin';
+        }
+    }
+
+    function handleTouchStart(e) {
+        e.preventDefault();
+        draggedItem = e.target;
+        draggedItem.className += ' hold';
+    }
+
+    function handleTouchMove(e) {
+        e.preventDefault();
+        const touch = e.touches[0];
+        draggedItem.style.position = 'absolute';
+        draggedItem.style.left = `${touch.pageX}px`;
+        draggedItem.style.top = `${touch.pageY}px`;
+    }
+
+    function handleTouchEnd(e) {
+        e.preventDefault();
+        const elementBelow = document.elementFromPoint(e.changedTouches[0].clientX, e.changedTouches[0].clientY);
+        if (elementBelow && elementBelow.classList.contains('recycle-bin')) {
+            elementBelow.appendChild(draggedItem);
+        }
+        draggedItem.className = 'trash-item';
+        draggedItem.style.position = 'initial';
+        draggedItem = null;
+    }
 
     // Agregar event listeners para cada elemento de basura
     trashItems.forEach(item => {
-        item.addEventListener('dragstart', dragStart);
-        item.addEventListener('dragend', dragEnd);
+        item.addEventListener('dragstart', handleDragStart);
+        item.addEventListener('dragend', handleDragEnd);
+        item.addEventListener('touchstart', handleTouchStart);
+        item.addEventListener('touchmove', handleTouchMove);
+        item.addEventListener('touchend', handleTouchEnd);
     });
 
     // Agregar event listeners para cada contenedor de reciclaje
     recycleBins.forEach(bin => {
-        bin.addEventListener('dragover', dragOver);
-        bin.addEventListener('dragenter', dragEnter);
-        bin.addEventListener('dragleave', dragLeave);
-        bin.addEventListener('drop', dragDrop);
+        bin.addEventListener('dragover', handleDragOver);
+        bin.addEventListener('dragenter', handleDragEnter);
+        bin.addEventListener('dragleave', handleDragLeave);
+        bin.addEventListener('drop', handleDrop);
     });
 
     // Verificar la puntuación al hacer clic en el botón
@@ -26,34 +86,6 @@ document.addEventListener('DOMContentLoaded', () => {
         resultContainer.style.display = 'block';
         resultMessage.textContent = `¡Has acertado ${score} de ${totalItems} elementos!`;
     });
-
-    function dragStart() {
-        this.className += ' hold';
-        setTimeout(() => (this.className = 'invisible'), 0);
-    }
-
-    function dragEnd() {
-        this.className = 'trash-item';
-    }
-
-    function dragOver(e) {
-        e.preventDefault();
-    }
-
-    function dragEnter(e) {
-        e.preventDefault();
-        this.className += ' hovered';
-    }
-
-    function dragLeave() {
-        this.className = 'recycle-bin';
-    }
-
-    function dragDrop() {
-        const draggedItem = document.querySelector('.invisible');
-        this.appendChild(draggedItem); // Mover el elemento de basura al contenedor
-        this.className = 'recycle-bin'; // Restablecer la clase del contenedor de reciclaje
-    }
 
     function calculateScore() {
         let score = 0;

@@ -4,8 +4,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const checkScoreBtn = document.getElementById('check-score-btn');
     const resultContainer = document.getElementById('result-container');
     const resultMessage = document.getElementById('result-message');
+    const resetGameBtn = document.getElementById('reset-game-btn'); // Botón de reinicio
+    const trashContainer = document.getElementById('trash-container'); // Contenedor inicial de basura
     let totalItems = trashItems.length;
-    let draggedItem = null; // Variable para almacenar el elemento arrastrado
+    let draggedItem = null;
 
     // Función para manejar la lógica de arrastrar y soltar
     function handleDragStart() {
@@ -101,4 +103,13 @@ document.addEventListener('DOMContentLoaded', () => {
         });
         return score;
     }
+
+    // Función para reiniciar el juego
+    resetGameBtn.addEventListener('click', () => {
+        trashItems.forEach(item => {
+            trashContainer.appendChild(item); // Mover cada elemento de basura al contenedor inicial
+            item.className = 'trash-item'; // Restablecer la clase del elemento de basura
+        });
+        resultContainer.style.display = 'none'; // Ocultar el contenedor de resultados
+    });
 });

@@ -1,8 +1,13 @@
+
 body {
   font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
+
 header {
   background-color: #588152;
   color: white;
@@ -16,135 +21,120 @@ footer {
   background-color: #d7d7cd;
   color: black;
   text-align: center;
-  justify-content:center ;
-  padding: 10px 20px;
-  
+  padding: 20px;
+  width: 100%;
+  position: relative;
+  left: 0;
+  bottom: 0;
 }
 
-body {
-  font-family: Arial, sans-serif;
-  margin: 0;
-  padding: 0;
-}
+
+
 
 nav {
   background-color: black;
   padding: 10px;
 }
+
 nav a {
   color: white;
   text-decoration: none;
-  cursor:pointer;
+  cursor: pointer;
   padding: 10px;
   display: inline-block;
   margin-left: 10px;
 }
+
 img {
   width: 90px;
   height: auto;
   margin-left: 10px;
 }
 
-.title{
+.title {
   font-size: 60px;
   color: #344e41;
 }
 
-.subTitle{
-  font-size:35px;
+.subTitle {
+  font-size: 35px;
 }
 
-.item-navbar:hover{
-  color:#c5c8cd
+.item-navbar:hover {
+  color: #c5c8cd;
 }
 
 .navbar-custom {
   background-color: inherit;
 }
+
 .navbar-custom .navbar-toggler {
-  color: #fff; 
+  color: #fff;
   border-color: #fff;
 }
+
 .navbar-custom .navbar-nav .nav-link {
-  color: #fff; 
+  color: #fff;
 }
 
-
-
-
-.titleSinColor{
+.titleSinColor {
   font-size: 40px;
 }
-.textoCuerpo{
+
+.textoCuerpo {
   font-size: 20px;
 }
 
-
 #resultado {
   margin-top: 10px;
-  min-height: 1em; 
+  min-height: 1em;
 }
-
-
-
-
-
-
-
-input {
-  margin-left: 35px;
-}
-
-
 
 button {
   margin-top: 10px;
   margin-bottom: 10px;
 }
 
-
 #felicitaciones {
   color: white;
   font-weight: bold;
-} 
+}
 
 #juego {
   color: white;
   background-color: #3a5a40;
   text-align: center;
   margin-bottom: 40px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  
+  padding: 20px;
 }
 
 #pantallaJuego {
-  display: none; 
-  width: 100%; 
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  display: none;
+  width: 100%;
   text-align: center;
 }
 
 #palabraIngresada {
-margin-left: 540px;
+  display: block;
+  margin: 0 auto;
 }
 
 #enviarPalabra {
-  margin-left: 610px;
-}
-@media (max-width: 768px) {
-  #palabraIngresada {
-    margin-left: 50px;   
-  }
+  display: block;
+  margin: 10px auto;
 }
 
 @media (max-width: 768px) {
+  #palabraIngresada {
+    margin: 0 auto;
+  }
+
   #enviarPalabra {
-    margin-left: 112px;
+    margin: 10px auto;
+  }
+
+  footer {
+    width: 100%;
+    position: relative;
   }
 }

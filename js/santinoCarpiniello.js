@@ -48,7 +48,7 @@ document.getElementById('enviarPalabra').addEventListener('click', () => {
           document.getElementById('resultado').style.color = "red"; // Opcional: Cambia el color de texto
       } else {
           document.getElementById('resultado').textContent = "Lo siento, has alcanzado el número máximo de intentos.";
-          document.getElementById('resultado').style.color = "red"; // Opcional: Cambia el color de texto
+          document.getElementById('resultado').style.color = "red"; 
           document.getElementById('palabraIngresada').style.display = 'none';
           document.getElementById('enviarPalabra').style.display = 'none';
       }

@@ -37,7 +37,7 @@ document.getElementById('enviarPalabra').addEventListener('click', () => {
   const palabraIngresada = document.getElementById("palabraIngresada").value.toLowerCase();
   if (palabraIngresada === palabras[flag].ordenadas) {
       document.getElementById('resultado').textContent = "¡Correcto!";
-      document.getElementById('resultado').style.color = "green"; // Opcional: Cambia el color de texto
+      document.getElementById('resultado').style.color = "green"; 
       document.getElementById('descripcion').textContent = palabras[flag].descripcion;  
       flag++;
       setTimeout(mostrarProximaPalabra, 1500);
@@ -45,9 +45,9 @@ document.getElementById('enviarPalabra').addEventListener('click', () => {
       intentos++;
       if (intentos < maxIntentos) {
           document.getElementById('resultado').textContent = `Incorrecto, intenta de nuevo. Intentos restantes: ${maxIntentos - intentos}`;
-          document.getElementById('resultado').style.color = "red"; // Opcional: Cambia el color de texto
+          document.getElementById('resultado').style.color = "red"; 
       } else {
-          document.getElementById('resultado').textContent = "Lo siento, has alcanzado el número máximo de intentos.";
+          document.getElementById('resultado').textContent = "Ups! , has alcanzado el número máximo de intentos. Reinicia el juego.";
           document.getElementById('resultado').style.color = "red"; 
           document.getElementById('palabraIngresada').style.display = 'none';
           document.getElementById('enviarPalabra').style.display = 'none';
